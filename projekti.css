@@ -141,9 +141,9 @@
   font-size: 18px;
 }
 
- /* Visualize your ideas with us */
+/* Visualize your ideas with us */
 
- /* first part */
+/* first part */
 .visualize-ideas1 {
   margin: 150px 0;
 }
@@ -155,23 +155,25 @@
   color: #564e4e;
 }
 
-.visualize-ideas-content1 h2{
+.visualize-ideas-content1 h2 {
   color: #564e4e;
   font-size: 35px;
   font-weight: 500;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.visualize-ideas-content1 p{
+.visualize-ideas-content1 p {
   padding-left: 30px;
 }
+
 .item {
   display: flex;
   flex-direction: column;
   gap: 35px;
   margin-left: 80px;
 }
-.visualize-ideas-content1 img{
+
+.visualize-ideas-content1 img {
   width: 900px;
   height: 600px;
   padding-right: 65px;
@@ -186,19 +188,21 @@
   gap: 20px;
   color: #564e4e;
 }
-.visualize-ideas-content2 h2{
+
+.visualize-ideas-content2 h2 {
   color: #564e4e;
   font-size: 35px;
   font-weight: 500;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.visualize-ideas-content2 img{
+.visualize-ideas-content2 img {
   width: 800px;
   height: 600px;
+  border-radius: 12px;
 }
 
-.visualize-ideas-content2 p{
+.visualize-ideas-content2 p {
   padding-left: 30px;
   padding-right: 30px;
   gap: 35px;
@@ -209,4 +213,59 @@
   flex-direction: column;
   gap: 55px;
   margin-left: 60px;
+}
+
+/* Our servies */
+
+.our-services {
+  margin: 100px 0;
+  background: linear-gradient(280deg, #FFF 0%, #FAF5F2 100%);
+  height: 500px;
+}
+
+.our-services h2 {
+  text-align: center;
+  color: #564E4E;
+  font-size: 36px;
+  font-weight: 500;
+  padding-bottom: 30px;
+}
+
+.our-services-contains {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.our-services-contains-item {
+  margin-top: 50px;
+  width: 30%;
+}
+
+.our-services-contains-item h4 {
+  color: #564E4E;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.our-services-contains-item p {
+  color: #564E4E;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 15px;
+  padding-top: 30px;
+
+
+}
+
+.our-services-contains-item-worker{
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 30px;
+  padding-left: 15px;
+}
+
+.our-services-contains-item-worker img{
+  border-radius: 35px;
 }
