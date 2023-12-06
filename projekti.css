@@ -385,6 +385,7 @@
   padding: 40px 30px;
   border-radius: 8px;
 }
+
 .form-content h1 {
   font-size: 1.5rem;
   font-weight: 500;
@@ -421,4 +422,29 @@
   display: flex;
   font-size: 15px;
   gap: 5px;
+}
+
+/* ABOUT US */
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 100px 5%;
+}
+
+.about-us-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-us-content h1 {
+  color: #564E4E;
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.about-us-content p {
+  color: #564E4E;
+  font-size: 18px;
 }
