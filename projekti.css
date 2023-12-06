@@ -54,6 +54,7 @@
   border: 1px solid #f79489;
   cursor: pointer;
   color: #fff;
+  text-decoration: none;
 }
 
 .header-content {
