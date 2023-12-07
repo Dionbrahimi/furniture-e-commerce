@@ -259,6 +259,13 @@
   padding-top: 30px;
 }
 
+.our-services-names {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
+}
+
 .our-services-contains-item-worker {
   display: flex;
   justify-content: flex-start;
@@ -439,12 +446,61 @@
 }
 
 .about-us-content h1 {
-  color: #564E4E;
+  color: #564e4e;
   font-size: 36px;
   font-weight: 500;
 }
 
 .about-us-content p {
-  color: #564E4E;
+  color: #564e4e;
   font-size: 18px;
+}
+
+/* CONTACT PAGE */
+
+.contact-input-container {
+  display: flex;
+  gap: 3rem;
+}
+
+.contact-input-container input {
+  width: 50%;
+  font-size: 0.897rem;
+  line-height: 1.45;
+  color: #6e6b7b;
+  padding: 0.371rem 0;
+  text-indent: 11px;
+  background-color: #fff;
+  border: 1px solid #d8d6de;
+  border-radius: 8px;
+  outline: none;
+}
+
+.contact-textarea {
+  width: 100%;
+  font-size: 0.897rem;
+  line-height: 1.45;
+  color: rgb(110, 107, 123);
+  padding: 0.371rem 0px;
+  text-indent: 11px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(216, 214, 222);
+  border-radius: 8px;
+  outline: none;
+  resize: none;
+  margin-top: 1rem;
+}
+
+.contact-btn {
+  background: #f79489;
+  outline: none;
+  padding: 6.5px 13px;
+  color: #fff;
+  font-size: 0.897rem;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  width: fit-content;
+  margin: 1rem 0 0 auto;
 }
