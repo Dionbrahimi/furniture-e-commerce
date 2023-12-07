@@ -505,3 +505,19 @@
   width: fit-content;
   margin: 1rem 0 0 auto;
 }
+
+
+@media screen and (max-width: 1200px) {
+  .why-choosing-us-content {
+    flex-direction: column;
+  }
+  .why-choosing-us-contentitem {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header-content {
+    padding: 0 5%;
+  }
+}
