@@ -14,20 +14,22 @@
     <link rel="stylesheet" href="projekti.css" />
   </head>
   <body>
-    <div class="form-container">
-      <form class="form-content" action="#">
+    <div class="form-container" >
+      <form class="form-content" action="#" action="#" onsubmit="return validateForm()">
         <h1>Welcome to Shady Rhymes!</h1>
         <p style="padding-bottom: 0.5rem">
           Sign in by entering information below
         </p>
         <input id="email" type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button class="form-btn">Log in</button>
+        <input id="password" type="password" placeholder="Password" />
+        <button class="form-btn" onclick="return validateForm()">Log in</button>
+        <div id="error-message" style="color: red;"></div>
         <p class="form-sign-up-section">
           Dont have an account?
           <a style="text-decoration: none; color: #f79489" href="sign-up-page.html">Sign up</a>
         </p>
       </form>
     </div>
+    <script src="projekti.js"></script>
   </body>
 </html>
