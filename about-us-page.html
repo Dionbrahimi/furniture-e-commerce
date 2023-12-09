@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="sticky-navbar container">
+    <nav class="sticky-navbar web-nav container">
         <span>
             <img src="./assets/images/logo.png" alt="Logo" />
         </span>
@@ -30,6 +30,33 @@
 
         <a href="sign-in-page.html" class="header-navbar__btn">Sign in</a>
     </nav>
+
+    <nav
+    style="background-color: #656463"
+    class="header-navbar mobile-nav container"
+  >
+    <span>
+      <img src="./assets/images/logo.png" alt="Logo" />
+    </span>
+
+    <i
+      style="font-size: 30px; color: #fff; cursor: pointer"
+      class="uil uil-bars"
+    ></i>
+  </nav>
+
+  <nav class="responsive-nav" id="responsiveNav">
+    <i class="uil close-icon uil-times"></i>
+    <ul class="responsive-nav__list">
+        <a href="home-page.html">Home</a>
+      <a href="products-page.html">Products</a>
+      <a href="about-us-page.html">About Us</a>
+      <a href="contact-page.html">Contact</a>
+    </ul>
+
+    <a href="sign-in-page.html" class="responsive-nav__btn">Sign in</a>
+  </nav>
+
 
     <div class="about-us-container">
         <div class="about-us-content">
@@ -115,5 +142,7 @@
         <p class="footer-sublink">Copyright 2021 ©shady rhymes</p>
     </footer>
 </body>
+
+<script src="projekti.js"></script>
 
 </html>
