@@ -60,7 +60,7 @@
       <a href="sign-in-page.html" class="responsive-nav__btn">Sign in</a>
     </nav>
 
-    <div class="about-us-container">
+    <div class="about-us-container" >
       <div style="max-width: 800px; margin: auto" class="about-us-content">
         <h1>Reason for contact</h1>
         <p>
@@ -69,14 +69,14 @@
         </p>
 
         <div style="margin-top: 1rem" class="contact-input-container">
-          <input type="text" placeholder="First name" />
+          <input type="text" placeholder="First name" id="contactFirstName"/>
 
-          <input type="text" placeholder="Last name" />
+          <input type="text" placeholder="Last name"  id="contactLastName"/>
         </div>
         <div style="margin-top: 1rem" class="contact-input-container">
-          <input type="email" placeholder="Emain" />
+          <input type="email" placeholder="Email"  id="contactEmail" />
 
-          <input type="tel" placeholder="Phone Number" />
+          <input type="tel" placeholder="Phone Number"  id="phoneNumber"/>
         </div>
 
         <textarea
@@ -85,8 +85,11 @@
           cols="30"
           rows="7"
           placeholder="Description"
+          id="description"
         ></textarea>
-        <button class="contact-btn">Send message</button>
+        <div id="error-message" style="color: #d00;"></div>
+        <div id="succes-message" style="color: rgb(1, 204, 1);"></div>
+        <button class="contact-btn" onclick="validateContactUsForm()">Send message</button>
       </div>
     </div>
 
