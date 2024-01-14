@@ -34,7 +34,7 @@
             text-align: center;
             font-size: 14px;
           "
-          href="sign-in-page.html"
+          href="sign-in-page.php"
           >< Back to login</a
         >
       </form>

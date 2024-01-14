@@ -15,7 +15,7 @@ function validateForm() {
       "Password must be at least 8 characters long and contain at least one number.";
     return false;
   } else {
-    window.location.href = "home-page.html";
+    window.location.href = "home-page.php";
     return false;
   }
 }
@@ -50,7 +50,7 @@ function validateSignUpForm() {
       "Password do not match!";
     return false;
   } else {
-    window.location.href = "sign-in-page.html";
+    window.location.href = "sign-in-page.php";
     return false;
   }
 }

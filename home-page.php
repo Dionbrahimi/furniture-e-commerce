@@ -24,13 +24,13 @@
           <img src="./assets/images/logo.png" alt="Logo" />
         </span>
         <ul class="header-navbar__list">
-           <a href="home-page.html">Home</a>
-          <a href="products-page.html">Products</a>
-          <a href="about-us-page.html">About Us</a>
-          <a href="contact-page.html">Contact</a>
+           <a href="home-page.php">Home</a>
+          <a href="products-page.php">Products</a>
+          <a href="about-us-page.php">About Us</a>
+          <a href="contact-page.php">Contact</a>
         </ul>
 
-        <a href="sign-in-page.html" class="header-navbar__btn">Sign in</a>
+        <a href="sign-in-page.php" class="header-navbar__btn">Sign in</a>
       </nav>
 
       <nav class="header-navbar mobile-nav container">
@@ -45,13 +45,13 @@
       <nav class="responsive-nav"  id="responsiveNav">
         <i class="uil close-icon uil-times"></i>
         <ul class="responsive-nav__list">
-           <a href="home-page.html">Home</a>
-          <a href="products-page.html">Products</a>
-          <a href="about-us-page.html">About Us</a>
-          <a href="contact-page.html">Contact</a>
+           <a href="home-page.php">Home</a>
+          <a href="products-page.php">Products</a>
+          <a href="about-us-page.php">About Us</a>
+          <a href="contact-page.php">Contact</a>
         </ul>
 
-        <a href="sign-in-page.html" class="responsive-nav__btn">Sign in</a>
+        <a href="sign-in-page.php" class="responsive-nav__btn">Sign in</a>
       </nav>
 
       <div class="header-content">

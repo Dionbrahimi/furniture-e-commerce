@@ -26,7 +26,7 @@
         <div id="error-message" style="color: #d00;"></div>
         <p class="form-sign-up-section">
           Dont have an account?
-          <a style="text-decoration: none; color: #f79489" href="sign-up-page.html">Sign up</a>
+          <a style="text-decoration: none; color: #f79489" href="sign-up-page.php">Sign up</a>
         </p>
       </form>
     </div>
