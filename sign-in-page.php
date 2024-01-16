@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="form-container" >
-      <form class="form-content" action="#" action="#" onsubmit="return validateForm()">
+      <form class="form-content" action="#" onsubmit="return validateForm()">
         <h1>Welcome to Shady Rhymes!</h1>
         <p style="padding-bottom: 0.5rem">
           Sign in by entering information below
@@ -30,6 +30,26 @@
         </p>
       </form>
     </div>
-    <script src="projekti.js"></script>
+    <script>
+      function validateForm() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  let errorMessage = document.getElementById("error-message");
+
+  let emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailValid.test(email)) {
+    errorMessage.innerHTML = "Please enter a valid email address.";
+    return false;
+  } else if (password.length < 8 || !/[0-9]/.test(password)) {
+    errorMessage.innerHTML =
+      "Password must be at least 8 characters long and contain at least one number.";
+    return false;
+  } else {
+    window.location.href = "home-page.php";
+    return false;
+  }
+}
+    </script>
   </body>
 </html>
