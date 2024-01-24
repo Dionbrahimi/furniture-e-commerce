@@ -1,3 +1,41 @@
+<?php
+  // function testGet(){
+  //   if(isset($_POST['Log in'])){
+  //       $perdoruesi =$_POST['user'];
+  //       $fjalkalimi =$_POST['psw'];
+  //       echo 'Perdoruesi: ', $perdoruesi,
+  //       '<br> Fjalkalimi: ', $fjalkalimi;
+  //     exit();
+  //   } else{
+  //       echo 'Ju duhet te plotsoni fushat !';
+  //   }
+  // }
+  function testGet(){
+    $error_message = "Ju lutem plotsoni te dhenat !";
+
+    if(isset($_POST['submit'])){
+        $perdoruesi = $_POST['user'];
+        $fjalkalimi = $_POST['psw'];
+
+        if (empty($perdoruesi) || empty($fjalkalimi)) {
+            $error_message = "Ju lutem plotësoni të gjitha fushat!";
+        } elseif (!filter_var($perdoruesi, FILTER_VALIDATE_EMAIL)) {
+            $error_message = "Ju lutem jepni një adresë email-i valide.";
+        } elseif (strlen($fjalkalimi) < 8 || !preg_match("/[0-9]/", $fjalkalimi)) {
+            $error_message = "Fjalëkalimi duhet të jetë të paktën 8 karaktere dhe të përmbajë të paktën një numër.";
+        } else {
+            echo 'Perdoruesi: ', $perdoruesi, '<br> Fjalkalimi: ', $fjalkalimi;
+            exit();
+        }
+    }
+    if (!empty($error_message)) {
+        echo $error_message;
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +53,7 @@
   </head>
   <body>
     <div class="form-container" >
-      <form class="form-content" action="#" onsubmit="return validateForm()">
+    <form class="form-content" action="home-page.php" method="POST" onsubmit="return validateForm()">
         <h1>Welcome to Shady Rhymes!</h1>
         <p style="padding-bottom: 0.5rem">
           Sign in by entering information below
@@ -30,7 +68,7 @@
         </p>
       </form>
     </div>
-    <script>
+    <!-- <script>
       function validateForm() {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
@@ -50,6 +88,6 @@
     return false;
   }
 }
-    </script>
+    </script> -->
   </body>
 </html>
