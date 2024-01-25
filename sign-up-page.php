@@ -1,38 +1,41 @@
 <?php
-  include 'connection.php';
+session_start();
+include 'connection.php';
 
-  if (isset($_POST['submit-btn'])) {
-    $filter_name = filter_var($_POST['name'],FILTER_SANITIZE_STRING);
+if (isset($_POST['submit-btn'])) {
+    $filter_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $name = mysqli_real_escape_string($conn, $filter_name);
 
-    $filter_sname = filter_var($_POST['sname'],FILTER_SANITIZE_STRING);
+    $filter_sname = filter_var($_POST['sname'], FILTER_SANITIZE_STRING);
     $sname = mysqli_real_escape_string($conn, $filter_sname);
 
-    $filter_email = filter_var($_POST['email'],FILTER_SANITIZE_STRING);
+    $filter_email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $email = mysqli_real_escape_string($conn, $filter_email);
 
-    $filter_password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+    $filter_password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
     $password = mysqli_real_escape_string($conn, $filter_password);
 
-    $filter_cpassword = filter_var($_POST['cpassword'],FILTER_SANITIZE_STRING);
+    $filter_cpassword = filter_var($_POST['cpassword'], FILTER_SANITIZE_STRING);
     $cpassword = mysqli_real_escape_string($conn, $filter_cpassword);
 
-    $select_user = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' ") or die ('query failed');
+    $select_user = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' ") or die('query failed');
 
-    if (mysqli_num_rows($select_user)>0){
-      $message []= 'User already exist';
-    }else {
-        if($password != $cpassword){
-          $message [] = 'Wrong password';
-        }else {
-          mysqli_query($conn, "INSERT INTO `users` (`name`,`sname`, `email`, `password`,`cpassword`) VALUES ('$name','$sname', '$email', '$password','$cpassword') ") or die ('query failed');
-            $message [] = 'Registred succesfully';
-            header('location:sign-in-page.php');
+    if (mysqli_num_rows($select_user) > 0) {
+        $message[] = 'User already exists';
+    } else {
+        if ($password != $cpassword) {
+            $message[] = 'Passwords do not match';
+        } else {
+            mysqli_query($conn, "INSERT INTO `users` (`name`,`sname`, `email`, `password`,`cpassword`) VALUES ('$name','$sname', '$email', '$password','$cpassword') ") or die('query failed');
+            $message[] = 'Registered successfully';
+
+            $_SESSION['user_email'] = $email;
+            
+            header('location: sign-in-page.php');
         }
     }
-  }
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
