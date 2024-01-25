@@ -1,3 +1,28 @@
+<?php
+  include 'connection.php';
+
+  if (isset($_POST['submit_btn'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    $select_user = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+
+    if (mysqli_num_rows($select_user) > 0) {
+      $user = mysqli_fetch_assoc($select_user);
+
+      // Verify the password
+      if (password_verify($password, $user['password'])) {
+        // Password is correct, redirect to the home page
+        header('Location: home-page.php');
+        exit();
+      } else {
+        $message[] = 'Incorrect password';
+      }
+    } else {
+      $message[] = 'User does not exist';
+    }
+  }
+?>
 
 
 <!DOCTYPE html>
@@ -17,14 +42,14 @@
   </head>
   <body>
     <div class="form-container" >
-    <form class="form-content" action="home-page.php" method="POST" onsubmit="return validateForm()">
+    <form class="form-content" action="home-page.php" method="POST">
         <h1>Welcome to Shady Rhymes!</h1>
         <p style="padding-bottom: 0.5rem">
           Sign in by entering information below
         </p>
-        <input id="email" type="email" placeholder="Email" />
-        <input id="password" type="password" placeholder="Password" />
-        <button class="form-btn" onclick="return validateForm()">Log in</button>
+        <input id="email" name="email" type="email" placeholder="Email" />
+        <input id="password" type="password" name="password" placeholder="Password" />
+        <button class="form-btn" name="submit_btn" onclick="return validateForm()">Log in</button>
         <div id="error-message" style="color: #d00;"></div>
         <p class="form-sign-up-section">
           Dont have an account?

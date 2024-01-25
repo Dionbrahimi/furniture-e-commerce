@@ -2,8 +2,8 @@
   include 'connection.php';
 
   if (isset($_POST['submit-btn'])) {
-    $filter_fname = filter_var($_POST['fname'],FILTER_SANITIZE_STRING);
-    $fname = mysqli_real_escape_string($conn, $filter_fname);
+    $filter_name = filter_var($_POST['name'],FILTER_SANITIZE_STRING);
+    $name = mysqli_real_escape_string($conn, $filter_name);
 
     $filter_sname = filter_var($_POST['sname'],FILTER_SANITIZE_STRING);
     $sname = mysqli_real_escape_string($conn, $filter_sname);
@@ -25,7 +25,7 @@
         if($password != $cpassword){
           $message [] = 'Wrong password';
         }else {
-          mysqli_query($conn, "INSERT INTO `users` (`fname`,`sname`, `email`, `password`,`cpassword`) VALUES ('$fname','$sname', '$email', '$password','$cpassword') ") or die ('query failed');
+          mysqli_query($conn, "INSERT INTO `users` (`name`,`sname`, `email`, `password`,`cpassword`) VALUES ('$name','$sname', '$email', '$password','$cpassword') ") or die ('query failed');
             $message [] = 'Registred succesfully';
             header('location:sign-in-page.php');
         }
@@ -62,12 +62,13 @@
     ?>
 
 
-      <form class="form-content" method="POST" action="#" onsubmit="return validateSignUpForm()" >
+<form class="form-content" method="POST" >
+
         <h1>Sign up</h1>
         <p style="padding-bottom: 0.5rem">
           Please fill in this form to create an account!
         </p>
-        <input type="text" name="fname" placeholder="First name" id="firstName" />
+        <input type="text" name="name" placeholder="First name" id="firstName" />
         <input type="text" name="sname" placeholder="Last name" id="lastName"/>
         <input type="email" name="email" placeholder="Email" id="signUpEmail"/>
         <input type="password" name="password" placeholder="Password" id="signUpPassword"/>
