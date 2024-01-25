@@ -1,39 +1,3 @@
-<?php
-  // function testGet(){
-  //   if(isset($_POST['Log in'])){
-  //       $perdoruesi =$_POST['user'];
-  //       $fjalkalimi =$_POST['psw'];
-  //       echo 'Perdoruesi: ', $perdoruesi,
-  //       '<br> Fjalkalimi: ', $fjalkalimi;
-  //     exit();
-  //   } else{
-  //       echo 'Ju duhet te plotsoni fushat !';
-  //   }
-  // }
-  function testGet(){
-    $error_message = "Ju lutem plotsoni te dhenat !";
-
-    if(isset($_POST['submit'])){
-        $perdoruesi = $_POST['user'];
-        $fjalkalimi = $_POST['psw'];
-
-        if (empty($perdoruesi) || empty($fjalkalimi)) {
-            $error_message = "Ju lutem plotësoni të gjitha fushat!";
-        } elseif (!filter_var($perdoruesi, FILTER_VALIDATE_EMAIL)) {
-            $error_message = "Ju lutem jepni një adresë email-i valide.";
-        } elseif (strlen($fjalkalimi) < 8 || !preg_match("/[0-9]/", $fjalkalimi)) {
-            $error_message = "Fjalëkalimi duhet të jetë të paktën 8 karaktere dhe të përmbajë të paktën një numër.";
-        } else {
-            echo 'Perdoruesi: ', $perdoruesi, '<br> Fjalkalimi: ', $fjalkalimi;
-            exit();
-        }
-    }
-    if (!empty($error_message)) {
-        echo $error_message;
-    }
-}
-
-?>
 
 
 <!DOCTYPE html>

@@ -382,6 +382,20 @@
 }
 
 /* SIGN IN */
+
+.message {
+  text-align: center;
+  text-transform: capitalize;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  width: 60%;
+  padding: .5rem 1.5rem;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  background: #000;
+  color: #fff;
+}
 .form-container {
   display: flex;
   flex-direction: column;
