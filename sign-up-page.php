@@ -1,40 +1,33 @@
 <?php
-session_start();
-include 'connection.php';
+
+@include 'connection.php';
 
 if (isset($_POST['submit-btn'])) {
-    $filter_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-    $name = mysqli_real_escape_string($conn, $filter_name);
 
-    $filter_sname = filter_var($_POST['sname'], FILTER_SANITIZE_STRING);
-    $sname = mysqli_real_escape_string($conn, $filter_sname);
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = md5($_POST['password']);
+    $cpassword = md5($_POST['cpassword']);    
+    $user_type = $_POST['user_type'];
 
-    $filter_email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-    $email = mysqli_real_escape_string($conn, $filter_email);
+    $select = "SELECT * FROM `user` WHERE email = '$email' && password = '$password'";
 
-    $filter_password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-    $password = mysqli_real_escape_string($conn, $filter_password);
+    $result = mysqli_query($conn, $select);
 
-    $filter_cpassword = filter_var($_POST['cpassword'], FILTER_SANITIZE_STRING);
-    $cpassword = mysqli_real_escape_string($conn, $filter_cpassword);
-
-    $select_user = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' ") or die('query failed');
-
-    if (mysqli_num_rows($select_user) > 0) {
-        $message[] = 'User already exists';
+    if (mysqli_num_rows($result) > 0) {
+      $error[] = 'User already exists';
     } else {
-        if ($password != $cpassword) {
-            $message[] = 'Passwords do not match';
-        } else {
-            mysqli_query($conn, "INSERT INTO `users` (`name`,`sname`, `email`, `password`,`cpassword`) VALUES ('$name','$sname', '$email', '$password','$cpassword') ") or die('query failed');
-            $message[] = 'Registered successfully';
+      if ($cpassword != $password) {
+          $error[] = 'Passwords do not match';
+      } else {
+          $insert = "INSERT INTO user(fname, lname, email, password, user_type) VALUES ('$fname', '$lname', '$email', '$password', '$user_type')";
+          mysqli_query($conn, $insert);
 
-            $_SESSION['user_email'] = $email;
-            
-            header('location: sign-in-page.php');
-        }
-    }
-}
+          header('location: sign_in.php');
+      }
+    }  
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,29 +46,33 @@ if (isset($_POST['submit-btn'])) {
   </head>
   <body>
     <div class="form-container">
-    <?php
-      if (isset($message)) {
-        foreach ($message as $msg) {
-          echo '
-            <div class="message">
-            <span>' . $msg . '</span>
-            </div>';
-        }
-      }
-    ?>
-
-
-<form class="form-content" method="POST" >
+      <form class="form-content" method="POST" action="">
 
         <h1>Sign up</h1>
         <p style="padding-bottom: 0.5rem">
           Please fill in this form to create an account!
         </p>
-        <input type="text" name="name" placeholder="First name" id="firstName" />
-        <input type="text" name="sname" placeholder="Last name" id="lastName"/>
+
+        <?php
+          if (isset($error)) {
+            foreach($error as $error){
+              echo '<span class="error_msg">'.$error.'</span>';
+            };
+          };
+        
+        ?>
+
+        <input type="text" name="fname" placeholder="First name" id="firstName" />
+        <input type="text" name="lname" placeholder="Last name" id="lastName"/>
         <input type="email" name="email" placeholder="Email" id="signUpEmail"/>
         <input type="password" name="password" placeholder="Password" id="signUpPassword"/>
         <input type="password" name="cpassword" placeholder="Confirm password" id="confirmPassword"/>
+        <select name="user_type" style="width: 100%; font-size: 0.897rem; line-height: 1.45;color: #6e6b7b;
+                                        padding: 0.371rem 11px; background-color: #fff;margin-bottom: 10px;
+                                        border: 1px solid #d8d6de; border-radius: 8px; outline: none;">
+          <option value="User">user</option>
+          <option value="Admin">admin</option>
+        </select>
         <button class="form-btn" name="submit-btn" onclick="return validateSignUpForm()">Sign up</button>
         <div id="error-message" style="color: #d00;"></div>
         <a
