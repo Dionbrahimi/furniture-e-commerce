@@ -2,27 +2,41 @@
 
 @include 'connection.php';
 
-  if (isset($_POST['submit_btn'])) {
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+session_start();
 
-    $select_user = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+if(isset($_POST['submit'])){
 
-    if (mysqli_num_rows($select_user) > 0) {
-      $user = mysqli_fetch_assoc($select_user);
+   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $pass = md5($_POST['password']);
+   $cpass = md5($_POST['cpassword']);
+   $user_type = $_POST['user_type'];
 
-      // Verify the password
-      if (password_verify($password, $user['password'])) {
-        // Password is correct, redirect to the home page
-        header('Location: home-page.php');
-        exit();
-      } else {
-        $message[] = 'Incorrect password';
+   $select = " SELECT * FROM user WHERE email = '$email' && password = '$pass' ";
+
+   $result = mysqli_query($conn, $select);
+
+   if(mysqli_num_rows($result) > 0){
+
+      $row = mysqli_fetch_array($result);
+
+      if($row['user_type'] == 'admin'){
+
+         $_SESSION['admin_name'] = $row['name'];
+         header('location:admin_page.php');
+
+      }elseif($row['user_type'] == 'user'){
+
+         $_SESSION['user_name'] = $row['name'];
+         header('location:user_page.php');
+
       }
-    } else {
-      $message[] = 'User does not exist';
-    }
-  }
+
+   }else{
+      $error[] = 'incorrect email or password!';
+   }
+
+};
 ?>
 
 
@@ -48,9 +62,16 @@
         <p style="padding-bottom: 0.5rem">
           Sign in by entering information below
         </p>
+        <?php
+      if(isset($error)){
+         foreach($error as $error){
+            echo '<span class="error-msg">'.$error.'</span>';
+         };
+      };
+      ?>
         <input id="email" name="email" type="email" placeholder="Email" />
         <input id="password" type="password" name="password" placeholder="Password" />
-        <button class="form-btn" name="submit_btn" onclick="return validateForm()">Log in</button>
+        <button class="form-btn" name="submit">Log in</button>
         <div id="error-message" style="color: #d00;"></div>
         <p class="form-sign-up-section">
           Dont have an account?
@@ -58,26 +79,6 @@
         </p>
       </form>
     </div>
-    <!-- <script>
-      function validateForm() {
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
-  let errorMessage = document.getElementById("error-message");
 
-  let emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!emailValid.test(email)) {
-    errorMessage.innerHTML = "Please enter a valid email address.";
-    return false;
-  } else if (password.length < 8 || !/[0-9]/.test(password)) {
-    errorMessage.innerHTML =
-      "Password must be at least 8 characters long and contain at least one number.";
-    return false;
-  } else {
-    window.location.href = "home-page.php";
-    return false;
-  }
-}
-    </script> -->
   </body>
 </html>

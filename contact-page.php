@@ -2,7 +2,20 @@
 
 @include 'connection.php';
 
+if (isset($_POST['submit-btn'])) {
+
+    $fname = mysqli_real_escape_string($conn, $_POST['firstName']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lastName']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
+    $desc = mysqli_real_escape_string($conn, $_POST['description']);
+
+
+    $insert = "INSERT INTO contact(firstName, lastName, email, phoneNumber, description) VALUES ('$fname', '$lname', '$email', '$phone', '$desc')";
+    mysqli_query($conn, $insert);
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,7 +79,7 @@
     </nav>
 
     <div class="about-us-container" >
-      <div style="max-width: 800px; margin: auto" class="about-us-content">
+      <form method="POST" style="max-width: 800px; margin: auto" class="about-us-content">
         <h1>Reason for contact</h1>
         <p>
           We would love to hear from you, please use the form below to get in
@@ -74,14 +87,14 @@
         </p>
 
         <div style="margin-top: 1rem" class="contact-input-container">
-          <input type="text" placeholder="First name" id="contactFirstName"/>
+          <input type="text" placeholder="First name" name="firstName" id="contactFirstName"/>
 
-          <input type="text" placeholder="Last name"  id="contactLastName"/>
+          <input type="text" placeholder="Last name" name="lastName"  id="contactLastName"/>
         </div>
         <div style="margin-top: 1rem" class="contact-input-container">
-          <input type="email" placeholder="Email"  id="contactEmail" />
+          <input type="email" placeholder="Email" name="email"  id="contactEmail" />
 
-          <input type="tel" placeholder="Phone Number"  id="phoneNumber"/>
+          <input type="tel" placeholder="Phone Number" name="phoneNumber"  id="phoneNumber"/>
         </div>
 
         <textarea
@@ -94,8 +107,8 @@
         ></textarea>
         <div id="error-message" style="color: #d00;"></div>
         <div id="succes-message" style="color: rgb(1, 204, 1);"></div>
-        <button class="contact-btn" onclick="validateContactUsForm()">Send message</button>
-      </div>
+        <button class="contact-btn" name="submit-btn">Send message</button>
+      </form>
     </div>
 
     <footer class="footer">

@@ -73,7 +73,7 @@ if (isset($_POST['submit-btn'])) {
           <option value="User">user</option>
           <option value="Admin">admin</option>
         </select>
-        <button class="form-btn" name="submit-btn" onclick="return validateSignUpForm()">Sign up</button>
+        <button class="form-btn" name="submit-btn" >Sign up</button>
         <div id="error-message" style="color: #d00;"></div>
         <a
           style="
@@ -88,5 +88,5 @@ if (isset($_POST['submit-btn'])) {
       </form>
     </div>
   </body>
-  <script src="projekti.js"></script>
+  <!-- <script src="projekti.js"></script> -->
 </html>
