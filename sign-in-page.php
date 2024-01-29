@@ -6,11 +6,8 @@ session_start();
 
 if(isset($_POST['submit'])){
 
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
-   $cpass = md5($_POST['cpassword']);
-   $user_type = $_POST['user_type'];
 
    $select = " SELECT * FROM user WHERE email = '$email' && password = '$pass' ";
 
@@ -20,16 +17,11 @@ if(isset($_POST['submit'])){
 
       $row = mysqli_fetch_array($result);
 
-      if($row['user_type'] == 'admin'){
+      if($row['user_type'] == 'Admin'){
+         header('location:admin-page.php');
 
-         $_SESSION['admin_name'] = $row['name'];
-         header('location:admin_page.php');
-
-      }elseif($row['user_type'] == 'user'){
-
-         $_SESSION['user_name'] = $row['name'];
-         header('location:user_page.php');
-
+      }else if($row['user_type'] == 'User'){
+         header('location:home-page.php');
       }
 
    }else{
@@ -57,7 +49,7 @@ if(isset($_POST['submit'])){
   </head>
   <body>
     <div class="form-container" >
-    <form class="form-content" action="home-page.php" method="POST">
+    <form class="form-content" method="POST">
         <h1>Welcome to Shady Rhymes!</h1>
         <p style="padding-bottom: 0.5rem">
           Sign in by entering information below
