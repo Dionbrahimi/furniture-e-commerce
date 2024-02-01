@@ -2,6 +2,17 @@
 
 @include 'connection.php';
 
+session_start();
+
+if (!isset($_SESSION['start_time'])) {
+  $_SESSION['start_time'] = time(); 
+}
+
+if (time() - $_SESSION['start_time'] > 3600) { 
+  session_regenerate_id(true);
+  $_SESSION['start_time'] = time(); 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +49,14 @@
           <a href="products-page.php">Products</a>
           <a href="about-us-page.php">About Us</a>
           <a href="contact-page.php">Contact</a>
+          <?php
+            if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {  
+                echo '<a href="admin-page.php">Dashboard</a>';
+            }
+            else {
+                echo '<a href="sign-in-page.php">-</a>';
+            }
+          ?>
         </ul>
 
         <a href="sign-in-page.php" class="header-navbar__btn">Sign in</a>
@@ -59,6 +78,7 @@
           <a href="products-page.php">Products</a>
           <a href="about-us-page.php">About Us</a>
           <a href="contact-page.php">Contact</a>
+          <a href="admin-page.php">Dashboard</a>
         </ul>
 
         <a href="sign-in-page.php" class="responsive-nav__btn">Sign in</a>
