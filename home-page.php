@@ -49,12 +49,10 @@ if (time() - $_SESSION['start_time'] > 3600) {
           <a href="products-page.php">Products</a>
           <a href="about-us-page.php">About Us</a>
           <a href="contact-page.php">Contact</a>
+          <a href="admin-page.php">Dashboard</a>
           <?php
-            if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {  
+            if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'Admin') {  
                 echo '<a href="admin-page.php">Dashboard</a>';
-            }
-            else {
-                echo '<a href="sign-in-page.php">-</a>';
             }
           ?>
         </ul>

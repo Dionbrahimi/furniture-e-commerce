@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
       $row = mysqli_fetch_array($result);
 
       if($row['user_type'] == 'Admin'){
-         header('location:homr-page.php');
+         header('location:home-page.php');
 
       }else if($row['user_type'] == 'User'){
          header('location:home-page.php');
