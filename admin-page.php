@@ -9,6 +9,14 @@ $result = $conn->query($sql);
 $sql = " SELECT * FROM contact";
 $contacts = $conn->query($sql);
 
+if(isset($_GET['delid'])){
+
+    $id = intval($_GET['delid']);
+    $sql = mysqli_query($conn, "DELETE FROM user WHERE `user`.`ID` = '$id'");
+    echo "<script>alert('Client deleted successfully');</script>";
+    echo "<script>window.location='admin-page.php';</script>";
+  }
+
 ?>
 
 
@@ -62,6 +70,7 @@ $contacts = $conn->query($sql);
         <h1>Users</h1>
         <table>
             <tr>
+                <th>ID</th>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Email</th>
@@ -72,10 +81,16 @@ $contacts = $conn->query($sql);
                 {
             ?>
             <tr>
+                <td><?php echo $rows['ID'] ?></td>
                 <td><?php echo $rows['fname'];?></td>
                 <td><?php echo $rows['lname'];?></td>
                 <td><?php echo $rows['email'];?></td>
                 <td><?php echo $rows['user_type'];?></td>
+                <td>
+                    <a href="update.php?editid=<?php echo htmlentities($rows['ID']);?>" class="btn">Update</a>
+                    <a href="admin-page.php?delid=<?php echo htmlentities($rows['ID']);?>" 
+                        onClick = "return confirm('Are you sure u want to delete this client?');">Delete</a>
+                </td>
             </tr>
             <?php
                 }
@@ -107,8 +122,8 @@ $contacts = $conn->query($sql);
             <?php
                 }
             ?>
-        </table>
-    </section>
+            </table>
+        </section>
 
-</body>
+    </body>
 </html>

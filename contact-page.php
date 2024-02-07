@@ -79,7 +79,7 @@ if (isset($_POST['submit-btn'])) {
     </nav>
 
     <div class="about-us-container" >
-      <form method="POST" style="max-width: 800px; margin: auto" class="about-us-content">
+      <form method="POST" style="max-width: 800px; margin: auto" class="about-us-content" onclick="validateContactUsForm();">
         <h1>Reason for contact</h1>
         <p>
           We would love to hear from you, please use the form below to get in

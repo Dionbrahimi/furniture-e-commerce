@@ -46,7 +46,7 @@ if (isset($_POST['submit-btn'])) {
   </head>
   <body>
     <div class="form-container">
-      <form class="form-content" method="POST" action="">
+      <form class="form-content" method="POST" action="" onclick="validateSignUpForm();">
 
         <h1>Sign up</h1>
         <p style="padding-bottom: 0.5rem">
@@ -88,5 +88,5 @@ if (isset($_POST['submit-btn'])) {
       </form>
     </div>
   </body>
-  <!-- <script src="projekti.js"></script> -->
+  <script src="projekti.js"></script>
 </html>

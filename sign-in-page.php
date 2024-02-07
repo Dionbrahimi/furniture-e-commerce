@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
   </head>
   <body>
     <div class="form-container" >
-    <form class="form-content" method="POST">
+    <form class="form-content" method="POST" onclick="validateForm();">
         <h1>Welcome to Shady Rhymes!</h1>
         <p style="padding-bottom: 0.5rem">
           Sign in by entering information below
@@ -63,14 +63,15 @@ if(isset($_POST['submit'])){
       ?>
         <input id="email" name="email" type="email" placeholder="Email" />
         <input id="password" type="password" name="password" placeholder="Password" />
-        <button class="form-btn" name="submit">Log in</button>
+        <button class="form-btn" name="submit" >Log in</button>
         <div id="error-message" style="color: #d00;"></div>
         <p class="form-sign-up-section">
           Dont have an account?
           <a style="text-decoration: none; color: #f79489" href="sign-up-page.php">Sign up</a>
         </p>
-      </form>
+    </form>
     </div>
 
   </body>
+  <script src="projekti.js"></script>
 </html>
