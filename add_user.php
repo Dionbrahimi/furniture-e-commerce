@@ -2,7 +2,7 @@
 
 @include 'connection.php';
 
-if (isset($_POST['submit-btn'])) {
+if (isset($_POST['add-user'])) {
 
     $fname = mysqli_real_escape_string($conn, $_POST['fname']);
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);
@@ -24,7 +24,7 @@ if (isset($_POST['submit-btn'])) {
           $insert = "INSERT INTO user(fname, lname, email, password, user_type) VALUES ('$fname', '$lname', '$email', '$password', '$user_type')";
           mysqli_query($conn, $insert);
 
-          header('location:sign-in-page.php');
+          header('location:admin-page.php');
       }
     }  
   }
@@ -48,9 +48,8 @@ if (isset($_POST['submit-btn'])) {
     <div class="form-container">
       <form class="form-content" method="POST" action="" onclick="validateSignUpForm();">
 
-        <h1>Sign up</h1>
+        <h1>Add New User</h1>
         <p style="padding-bottom: 0.5rem">
-          Please fill in this form to create an account!
         </p>
 
         <?php
@@ -73,18 +72,8 @@ if (isset($_POST['submit-btn'])) {
           <option value="User">user</option>
           <option value="Admin">admin</option>
         </select><br>
-        <button class="form-btn" name="submit-btn" >Sign up</button>
+        <button class="form-btn" name="add-user" >Add User</button>
         <div id="error-message" style="color: #d00;"></div>
-        <a
-          style="
-            text-decoration: none;
-            color: #f79489;
-            text-align: center;
-            font-size: 14px;
-          "
-          href="sign-in-page.php"
-          >< Back to login</a
-        >
       </form>
     </div>
   </body>

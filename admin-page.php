@@ -26,7 +26,6 @@ if(isset($_GET['delid'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <style>
         table {
             margin: 0 auto;
@@ -58,6 +57,22 @@ if(isset($_GET['delid'])){
         td {
             font-weight: lighter;
         }
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        button {
+            text-decoration: none;
+            background-color: #006600; 
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        button a{
+            color:white;
+        }
     </style>
 </head>
 
@@ -87,7 +102,7 @@ if(isset($_GET['delid'])){
                 <td><?php echo $rows['email'];?></td>
                 <td><?php echo $rows['user_type'];?></td>
                 <td>
-                    <a href="update.php?editid=<?php echo htmlentities($rows['ID']);?>" class="btn">Update</a>
+                    <a href="update.php?editid=<?php echo htmlentities($rows['ID']);?>" class="btn">Update | </a>
                     <a href="admin-page.php?delid=<?php echo htmlentities($rows['ID']);?>" 
                         onClick = "return confirm('Are you sure u want to delete this client?');">Delete</a>
                 </td>
@@ -97,6 +112,10 @@ if(isset($_GET['delid'])){
             ?>
         </table>
     </section>
+
+    <div class="center-container">
+        <button><a href="add_user.php">Add new user</a></button>
+    </div>
 
     <section>
         <h1>Contacts</h1>
